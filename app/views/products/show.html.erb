@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h2><%= "#{@product.title}" %></h2>
+      <td><%= "Category: #{@product.category.type_category}" %></td><br>
+      <td><%= "Description: #{@product.description}" %></td><br>
+      <td><%= "Posted By: #{@product.user.name}" %></td>
+      <h3><%= "Price: #{@product.price}" %></h3><br>
+
+
+<% if current_user%>
+  <% if policy(@product).update? %>
+    <%= link_to 'Edit', edit_category_product_path(@category) %> 
+  <% end %>
+  <%= link_to 'Comment', new_product_comment_path(@product) %>
+<%end%>
+
+<% @product.comments.each do |comment| %>
+  <tr>
+  <br>
+    <%= @product.user.name %><br>
+    <li><%= comment.text %></li>
+<% end %>
+
+
+<%= link_to 'Back', category_products_path(@category) %> 

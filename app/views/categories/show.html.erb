@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type:</strong>
+  <%= link_to @category.type_category, category_products_path(@category) %>
+</p>
+
+<% if current_user %>
+  <%= link_to 'Edit',edit_user_category_path(@user, @category) %>
+<%end %>
+
+<% @comments.each do |comment| %>
+  <tr>
+    <td><%= comment.text %></td>
+<% end %>
+
+<%= link_to 'Back', categories_path %>

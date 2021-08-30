@@ -1,0 +1,8 @@
+<% if category.products? %>
+
+No Products found for this category
+
+<% else %>
+<% for product in @products %>
+<%= link_to product.title, :action => "show", :id => product %> <% end %>
+<% end>
